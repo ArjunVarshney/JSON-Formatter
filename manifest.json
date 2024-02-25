@@ -1,0 +1,12 @@
+{
+   "name": "json-prettifier",
+   "description": "prettify json",
+   "version": "1.0.0",
+   "manifest_version": 3,
+   "icons": {
+      "48": "images/icon-48.png",
+      "128": "images/icon-128.png"
+   },
+   "permissions": ["storage"],
+   "content_scripts": [{ "matches": ["<all_urls>"], "js": ["index.js"] }]
+}
