@@ -1,8 +1,8 @@
 const defaultStyles = {
-   fontSize: "14px",
+   fontSize: "16px",
    font: "Lucida Console",
    line_height: "1.5",
-   space: "25px",
+   space: "24px",
    space_from_left: "50px",
    links: true,
    colors: {
@@ -108,7 +108,7 @@ const tags = {
         color:${styles.retractors.color};
         position:absolute;
         left:${styles.retractors.space_from_left};
-        translate:0 -${styles.fontSize};
+        translate:0 calc(${styles.fontSize} * ${styles.line_height} * -1 + 2px);
         background: ${styles.colors.background};
 	      border: none;
 	      padding: 0;
@@ -128,10 +128,12 @@ const tags = {
             entries.style.display = 'none';
             e.target.parentElement.style.display = 'inline-block'
             e.target.innerText = '▾';
+            e.target.style.translate = '0 -${styles.fontSize}';
           }else {
             entries.style.display = 'block';
             e.target.parentElement.style.display = 'block'
             e.target.innerText = '▴';
+            e.target.style.translate = '0 calc(${styles.fontSize} * ${styles.line_height} * -1 + 2px)';
           }
         return false;
         })(arguments[0]);return false;">▴</button>`
@@ -2739,10 +2741,10 @@ const initialize = () => {
          const defaultSettings = {
             theme: "Default Dark",
             configs: {
-               fontSize: "14px",
+               fontSize: "16px",
                font: "Lucida Console",
-               line_height: "1.3",
-               space: "25px",
+               line_height: "1.5",
+               space: "24px",
                space_from_left: "50px",
                links: true,
                colors: {
