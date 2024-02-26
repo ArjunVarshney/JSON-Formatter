@@ -1,12 +1,12 @@
 const defaultStyles = {
    fontSize: "16px",
-   font: "Lucida Console",
+   font: "Palatino",
    line_height: "1.5",
    space: "24px",
    space_from_left: "50px",
    links: true,
    colors: {
-      background: "#000000",
+      background: "#0b0e17",
       keys: "#d54e50",
       values: {
          number: "#FF8811",
@@ -805,28 +805,7 @@ const themes = {
    dark: [
       {
          name: "Default Dark",
-         settings: {
-            colors: {
-               background: "#000000",
-               keys: "#d54e50",
-               values: {
-                  number: "#FF8811",
-                  string: "#b9ba1f",
-                  boolean: "#EDA2F2",
-                  function: "#FFC43D",
-                  undefined: "#06D6A0",
-                  null: "#B3B7EE",
-                  other: "#FFC43D",
-                  curly_brace: "#ffffff",
-                  square_brace: "#ffffff",
-                  comma_colon_quotes: "#ffffff",
-               },
-            },
-            comments: { color: "#808080" },
-            retractors: { color: "#8c8c8c" },
-            line_numbers: { color: "#5c749c" },
-            bracket_pair_lines: { color: "#3c3c3c" },
-         },
+         settings: defaultStyles,
       },
       {
          name: "Github Dark",
@@ -2253,6 +2232,10 @@ const initialize = () => {
       transition: 0.4s;
    }
 
+   .dark .slider {
+      background-color: #eaeaea;
+   }
+
    .slider:hover {
       opacity: 0.9;
    }
@@ -2267,6 +2250,9 @@ const initialize = () => {
       background-color: white;
       -webkit-transition: 0.4s;
       transition: 0.4s;
+   }
+   .dark .slider:before {
+      background-color: #1a1a1a;
    }
 
    input:checked+.slider {
@@ -2423,8 +2409,29 @@ const initialize = () => {
       min-width: 100vw;
       min-height:100vh;
    }
+
+   .dark .shadow, .dark.shadow{
+      border: 1px solid rgb(255 255 255 / 0.1);
+      border-right: none;
+   }
+   .dark #settingsForm, .dark #rightMenu, .dark #menu-btn{
+      background: #1a1a1a;
+      color: #eaeaea !important;
+   }
+   .dark path, .dark circle{
+      stroke: white;
+   }
+   .dark #close-btn path{
+      fill:white;
+   }
+   .dark button{
+      opacity: 0.5;
+   }
+   .dark #reset-btn{
+      opacity: 1;
+   }
 </style>
-   <div class="w3-sidebar w3-bar-block w3-card w3-animate-right relative" style="display: none; right: 0; top: 0"
+   <div class="shadow w3-sidebar w3-bar-block w3-card w3-animate-right relative" style="display: none; right: 0; top: 0"
       id="rightMenu">
       <button class="close btn top-5 right-0 absolute" id="close-btn">
          <?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30px" height="30px">
@@ -2714,7 +2721,7 @@ const initialize = () => {
          </form>
       </div>
    </div>
-   <div class="absolute top-5 right-0 btn-group flex gap-2 items-center shadow">
+   <div class="absolute top-5 right-0 btn-group flex gap-2 items-center shadow" id="menu-btn">
       <label class="switch">
          <input type="checkbox" id="mode-toggle" checked />
          <span class="slider round"></span>
@@ -2740,51 +2747,7 @@ const initialize = () => {
       if (!settings) {
          const defaultSettings = {
             theme: "Default Dark",
-            configs: {
-               fontSize: "16px",
-               font: "Lucida Console",
-               line_height: "1.5",
-               space: "24px",
-               space_from_left: "50px",
-               links: true,
-               colors: {
-                  background: "black",
-                  keys: "#d54e50",
-                  values: {
-                     number: "#FF8811",
-                     string: "#b9ba1f",
-                     boolean: "#EDA2F2",
-                     function: "#FFC43D",
-                     undefined: "#06D6A0",
-                     null: "#B3B7EE",
-                     other: "#FFC43D",
-                     curly_brace: "#FFFFFF",
-                     square_brace: "#FFFFFF",
-                     comma_colon_quotes: "#FFFFFF",
-                  },
-               },
-               comments: {
-                  show: true,
-                  color: "#808080",
-                  space_from_left: "35px",
-               },
-               retractors: {
-                  show: true,
-                  color: "#8c8c8c",
-                  space_from_left: "37px",
-               },
-               line_numbers: {
-                  show: true,
-                  color: "#5c749c",
-                  space_from_left: "30px",
-               },
-               bracket_pair_lines: {
-                  show: true,
-                  color: "#3c3c3c",
-                  space_from_left: "6px",
-                  type: "solid",
-               },
-            },
+            configs: defaultStyles,
          };
          chrome.storage.sync.set(
             {
