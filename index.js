@@ -1,6 +1,6 @@
 const defaultStyles = {
    fontSize: "16px",
-   font: "Palatino",
+   font: "Palatino, monospace",
    line_height: "1.5",
    space: "24px",
    space_from_left: "50px",
@@ -2741,9 +2741,11 @@ const initialize = () => {
    `);
 
    chrome.storage.sync.get("settings", function (data) {
-      var settings = data.settings.configs;
-      var theme = data.settings.theme;
-
+      var settings, theme;
+      if (data.settings) {
+         var settings = data.settings.configs;
+         var theme = data.settings.theme;
+      }
       if (!settings) {
          const defaultSettings = {
             theme: "Default Dark",
