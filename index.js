@@ -1,6 +1,6 @@
 const defaultStyles = {
    fontSize: "16px",
-   font: "Palatino, monospace",
+   font: "monospace",
    line_height: "1.5",
    space: "24px",
    space_from_left: "50px",
@@ -2531,6 +2531,7 @@ const initialize = () => {
             <div class="input-select">
                <label for="font">Font:</label><select id="font" name="font">
                   <option value="Helvetica">Helvetica</option>
+                  <option value="monospace">Monospace</option>
                   <option value="Lucida Console">Lucidas Console</option>
                   <option value="Arial">Arial</option>
                   <option value="Arial Black">Arial Black</option>
